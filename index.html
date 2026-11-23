@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FFB65C">
+  <title>拼音乐园</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Andika：专为识字教学设计，a / g 为单层写法，与课本一致；离线时自动回退到系统字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="app">
+    <!-- 首页 -->
+    <section id="home" class="screen active">
+      <header class="home-head">
+        <div class="mascot">🐼</div>
+        <div class="home-titles">
+          <h1 class="title">拼音乐园</h1>
+          <p class="subtitle">和熊猫一起学拼音</p>
+        </div>
+        <button id="sfx-toggle" class="icon-btn" aria-label="音效开关">🔔</button>
+      </header>
+      <div class="stats" id="home-stats"></div>
+      <nav class="mode-grid">
+        <button class="mode-tile c-yellow" data-mode="cards"><span class="mt-emo">📖</span><span class="mt-name">拼音卡片</span><span class="mt-sub">声母 韵母 声调</span></button>
+        <button class="mode-tile c-orange" data-mode="level"><span class="mt-emo">🗺️</span><span class="mt-name">闯关练习</span><span class="mt-sub">答题拿星星</span></button>
+        <button class="mode-tile c-blue" data-mode="listen"><span class="mt-emo">👂</span><span class="mt-name">听音选择</span><span class="mt-sub">听一听 选一选</span></button>
+        <button class="mode-tile c-green" data-mode="build"><span class="mt-emo">🧩</span><span class="mt-name">拼音拼装</span><span class="mt-sub">声母+韵母+声调</span></button>
+        <button class="mode-tile c-purple" data-mode="write"><span class="mt-emo">✏️</span><span class="mt-name">看词写拼音</span><span class="mt-sub">拼音小键盘</span></button>
+        <button class="mode-tile c-pink" data-mode="timed"><span class="mt-emo">⏱️</span><span class="mt-name">限时挑战</span><span class="mt-sub">60 秒连击</span></button>
+        <button class="mode-tile c-teal wide" data-mode="wrong"><span class="mt-emo">📒</span><span class="mt-name">错题本 <span class="badge" id="wrong-badge" hidden></span></span><span class="mt-sub">答错的题在这里复习</span></button>
+      </nav>
+      <p class="home-tip">💡 点 🔊 可以听读音（需要设备支持中文朗读）</p>
+    </section>
+
+    <!-- 单元 / 关卡选择 -->
+    <section id="units" class="screen">
+      <div class="screen-head"><button class="icon-btn" data-go="home" aria-label="返回">←</button><h2 id="units-title"></h2></div>
+      <div class="unit-list" id="unit-list"></div>
+    </section>
+
+    <!-- 拼音卡片 -->
+    <section id="cards" class="screen">
+      <div class="screen-head"><button class="icon-btn" data-go="home" aria-label="返回">←</button><h2>📖 拼音卡片</h2></div>
+      <div class="tabs" id="card-tabs"></div>
+      <div id="card-grid"></div>
+    </section>
+
+    <!-- 答题 -->
+    <section id="quiz" class="screen">
+      <div class="quiz-top">
+        <button class="icon-btn" data-go="back" aria-label="退出">✕</button>
+        <div class="quiz-mid">
+          <div class="quiz-title" id="quiz-title"></div>
+          <div class="bar"><div class="bar-fill" id="quiz-bar"></div></div>
+        </div>
+        <div class="quiz-score" id="quiz-score"></div>
+      </div>
+      <div class="quiz-body" id="quiz-body"></div>
+    </section>
+
+    <!-- 成绩 -->
+    <section id="result" class="screen"><div id="result-body"></div></section>
+
+    <!-- 错题本 -->
+    <section id="wrong" class="screen">
+      <div class="screen-head"><button class="icon-btn" data-go="home" aria-label="返回">←</button><h2>📒 错题本</h2></div>
+      <div class="wrong-actions" id="wrong-actions">
+        <button class="btn primary" id="wrong-review">开始复习</button>
+        <button class="btn ghost" id="wrong-clear">清空</button>
+      </div>
+      <div id="wrong-list"></div>
+    </section>
+  </main>
+
+  <div id="feedback" class="sheet"></div>
+  <div id="modal" class="modal"></div>
+  <div id="toast"></div>
+  <div id="flash"></div>
+
+  <script src="audio/manifest.js" onerror="window.AUDIO_FILES = []"></script>
+  <script src="js/pinyin.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
